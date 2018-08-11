@@ -45,6 +45,7 @@ namespace MongoFramework.Infrastructure.Mapping
 					{
 						ClassMap = new BsonClassMap(EntityType);
 						ClassMap.AutoMap();
+						ClassMap.SetDiscriminator(EntityType.FullName);
 						BsonClassMap.RegisterClassMap(ClassMap);
 
 						foreach (var processor in DefaultMappingPack.Instance.Processors)

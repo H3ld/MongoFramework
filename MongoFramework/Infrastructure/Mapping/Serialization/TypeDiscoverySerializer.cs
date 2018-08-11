@@ -70,7 +70,7 @@ namespace MongoFramework.Infrastructure.Mapping.Serialization
 						var assignableType = AppDomain.CurrentDomain.GetAssemblies()
 							.Where(a => !a.IsDynamic)
 							.SelectMany(a => a.GetTypes())
-							.Where(t => t.Name == name && typeof(TEntity).IsAssignableFrom(t))
+							.Where(t => (t.Name == name || t.FullName == name) && typeof(TEntity).IsAssignableFrom(t))
 							.FirstOrDefault();
 
 						AssignableTypes.Add(assignableType);
